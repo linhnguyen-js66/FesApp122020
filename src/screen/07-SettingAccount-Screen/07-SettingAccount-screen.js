@@ -41,8 +41,8 @@ const SettingAccountScreen = ({ route }) => {
                 <Text style={style.textHeader}>Thông tin tài khoản</Text>
                 {data.map((item) => {
                     const { TEN, MA } = item
-                    return <View style={style.container}>
-                        <Text key={TEN} style={style.name}>Tên: {TEN} Mã: {MA}</Text>
+                    return <View style={style.container} key={TEN}>
+                        <Text  style={style.name}>Tên: {TEN} Mã: {MA}</Text>
                     </View>
                 })}
                 <View style={style.container}>

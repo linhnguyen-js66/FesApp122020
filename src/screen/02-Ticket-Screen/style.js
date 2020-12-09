@@ -4,7 +4,8 @@ export default StyleSheet.create({
      backgroundColor:'#005580',
      flex:1,
      justifyContent:'center',
-     marginHorizontal:16
+     marginHorizontal:16,
+     marginTop:32
  },
  lineone:{
      padding:8,
@@ -32,5 +33,16 @@ export default StyleSheet.create({
  },
  caculate:{
      padding:8
- }
+ },
+ containControl:{
+     marginTop:16,
+     marginBottom:16
+ },
+ table:{
+     marginBottom:16,
+     marginHorizontal:16
+ },
+ input:{
+    textAlign:'center'
+  }
 })
