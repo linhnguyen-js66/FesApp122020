@@ -8,4 +8,7 @@ container: { flex: 1,backgroundColor: '#fff' },
   },
   text: { margin: 6 },
   row: { flexDirection: 'row'},
+  input:{
+    textAlign:'center'
+  }
 })

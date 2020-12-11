@@ -15,5 +15,10 @@ export default StyleSheet.create({
     },
     caculate:{
         padding:8
-    }
+    }, controlType:{
+        flex:1,
+        flexDirection:'row',
+        marginHorizontal:16,
+        marginTop:16
+    },
 })

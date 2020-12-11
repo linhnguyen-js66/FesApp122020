@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native'
+
 export default StyleSheet.create({
  header:{
      backgroundColor:'#005580',
@@ -19,7 +20,7 @@ export default StyleSheet.create({
      marginTop:8
  },
  total:{
-     borderWidth:0.5,
+    borderWidth:0.5,
     borderColor:'black',
     flex:1,
     justifyContent:'flex-end',
@@ -42,7 +43,25 @@ export default StyleSheet.create({
      marginBottom:16,
      marginHorizontal:16
  },
- input:{
-    textAlign:'center'
-  }
+ labelTable:{
+     flexDirection:'row',
+     width:80,
+     alignItems:'center'
+    //  marginTop:12,
+    //  backgroundColor:'#005580',
+    //  marginHorizontal:16
+ },
+ controlType:{
+     flex:1,
+     flexDirection:'row',
+     marginHorizontal:16,
+     marginTop:16
+ },
+ text:{
+     fontSize:17,
+     marginRight:36,
+     marginLeft:4,
+     marginBottom:16
+ },
+ 
 })

@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { View,Text, TouchableOpacity } from "react-native"
 import style from './style'
 import { Icon } from 'react-native-elements'
-const ControlPanel = ({ title,data,index}) => {
 
-    const [valueSelect, setValueSelect] = useState(data[0])
+const ControlPanel = ({title,data,index,valueSelect,onClick,setState}) => {
     const [openList, setOpenList] = useState(false)
     return (
         <View style={[{ flex: 1, flexDirection: 'row'},index==2 && {marginLeft:8}]}>
@@ -16,25 +15,25 @@ const ControlPanel = ({ title,data,index}) => {
                         <TouchableOpacity
                             style={style.chooseItemContainer}
                             onPress={() => {
-                                setValueSelect(valueSelect), setOpenList(false)
+                               onclick(), setOpenList(false)
                             }}
                         >
                             <Text style={{ color: 'black', fontSize: 17 }}>{valueSelect}</Text>
                         </TouchableOpacity>
-                        {data.map((title) => {
-                            if (title !== valueSelect) {
+                        {data.map((item) => {
+                            if (item !== valueSelect) {
                                 return (
                                     <TouchableOpacity
-                                        key={title}
+                                        key={item}
                                         style={{
                                             paddingVertical: 4
                                         }}
                                         onPress={() => {
-                                            setValueSelect(title),
+                                                setState(item),
                                                 setOpenList(false)
                                         }}
                                     >
-                                        <Text style={{ color: 'black', fontSize: 17 }}>{title}</Text>
+                                        <Text style={{ color: 'black', fontSize: 17 }}>{item}</Text>
                                     </TouchableOpacity>
                                 )
                             } else return null

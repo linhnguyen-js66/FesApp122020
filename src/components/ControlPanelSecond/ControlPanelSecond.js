@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { View,Text, TouchableOpacity } from "react-native"
 import style from './style'
 import { Icon } from 'react-native-elements'
-const ControlPanelSecond = ({ title }) => {
-    const Data = ['Tế tiêu-Mỹ Đình','Mỹ Đình-Tế Tiêu','Hợp Đồng']
+const ControlPanelSecond = ({ title,Data }) => {
+    
     const [valueSelect, setValueSelect] = useState(Data[0])
     const [openList, setOpenList] = useState(false)
     return (

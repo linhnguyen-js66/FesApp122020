@@ -18,7 +18,8 @@ export default StyleSheet.create({
       marginTop:16
   },
   ControlPanel:{
-      flexDirection:'row'
+      flexDirection:'row',
+      marginTop:16
   },
   total:{
     borderWidth:0.5,
