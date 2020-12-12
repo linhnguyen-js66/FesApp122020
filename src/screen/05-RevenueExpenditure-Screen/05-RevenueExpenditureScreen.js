@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, ScrollView, Alert, TouchableOpacity } from "react-native"
+import { View, ScrollView, Alert, TouchableOpacity, Text } from "react-native"
 import style from './style'
 import Header from '../../components/Header'
 import InputTicket from '../../components/InputTicket'
@@ -25,22 +25,22 @@ const ListItem = ({ data, handleClick }) => {
             <DataTable>
                 <DataTable.Row>
                     <DataTable.Cell>{note}</DataTable.Cell>
-                  {type == "THU" ? <View style={{flexDirection:'row',flex:1}}>
-    <DataTable.Cell style={{flex:1,width:200}}>{money}</DataTable.Cell>
-    <DataTable.Cell style={{flex:1}} >{temp}</DataTable.Cell>
-                  </View> :<View>
-    <DataTable.Cell style={{flex:1}}>{temp}</DataTable.Cell>
-    <DataTable.Cell style={{flex:1,marginLeft:150}}>{money}</DataTable.Cell>
-                  </View> }
+                    {type == "THU" ? <View style={{ flexDirection: 'row', flex: 1 }}>
+                        <DataTable.Cell style={{ flex: 1 }}>{money}</DataTable.Cell>
+                        <DataTable.Cell style={{ flex: 1 }} >{temp}</DataTable.Cell>
+                    </View> : <View>
+                            <DataTable.Cell style={{ flex: 1 }}>{temp}</DataTable.Cell>
+                            <DataTable.Cell style={{ flex: 1, marginLeft: 190 }}>{money}</DataTable.Cell>
+                        </View>}
                     <TouchableOpacity onPress={handleClick} style={{ alignItems: 'flex-end', marginRight: 16, flex: 1 }}>
                         <Icon type="font-awesome" name="close" color="tomato" />
                     </TouchableOpacity>
                 </DataTable.Row>
             </DataTable>
         </View>
-
     )
 }
+
 const RevenueExpenditureScreen = () => {
     const navigation = useNavigation()
     const typeData = ["THU", "CHI"]
@@ -82,7 +82,24 @@ const RevenueExpenditureScreen = () => {
         setNewTable(resultItem)
     }
     //total
-
+    const totalRevenue = () => {
+        let temp = 0
+        newTable.map((item) => {
+            if (item.type == "THU") {
+                temp += Number(item.money)
+            }
+        })
+        return temp
+    }
+    const totalExpenditure = () => {
+        let sum = 0
+        newTable.map((item) => {
+            if (item.type == "CHI") {
+                sum += Number(item.money)
+            }
+        })
+        return sum
+    }
     return (
         <ScrollView>
             <View style={{ marginTop: 32 }}>
@@ -105,7 +122,7 @@ const RevenueExpenditureScreen = () => {
                 <View style={style.containMoney_Button}>
                     <InputTicket title="Số tiền" handleChangeText={(text) => setMoney(text)} />
                     <View style={{ marginHorizontal: 8 }}>
-                        <ButtonTable title="Bỏ qua" onClick={()=>navigation.goBack()}/>
+                        <ButtonTable title="Bỏ qua" onClick={() => navigation.goBack()} />
                     </View>
                     <View>
                         <ButtonTable title="Lưu lại" onClick={SaveDataInput} />
@@ -114,6 +131,18 @@ const RevenueExpenditureScreen = () => {
                 {/* TableComponent */}
                 <LabelTable />
                 {newTable.map((item) => <ListItem data={item} key={item.note} handleClick={() => RemoveItem(item)} />)}
+                {/* <View style={style.containTotal}>
+                    <Text>Cộng</Text>
+                    <Text>{totalRevenue()}</Text>
+                    <Text>{totalExpenditure()}</Text>
+                </View> */}
+                <DataTable>
+                    <DataTable.Row>
+                        <DataTable.Cell>Cộng</DataTable.Cell>
+                        <DataTable.Cell>{totalRevenue()}</DataTable.Cell>
+                        <DataTable.Cell>{totalExpenditure()}</DataTable.Cell>
+                    </DataTable.Row>
+                </DataTable>
             </View>
         </ScrollView>
     )
